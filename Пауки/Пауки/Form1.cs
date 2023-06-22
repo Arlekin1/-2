@@ -20,18 +20,18 @@ namespace Пауки
         private void Form1_Load(object sender, EventArgs e)
         {
             timer = new Timer();
-            timer.Interval = 1000; // Интервал в миллисекундах (1 секунда)
+            timer.Interval = 1000;
             timer.Tick += new EventHandler(timer1_Tick);
             timer.Start();
 
-            CreateSpider(); // Создать первого паука при загрузке формы
+            CreateSpider();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             time++; // Увеличение счетчика времени
 
-            if (AreSpidersPresent() && time >= 10) // Проверка условия поражения (наличие пауков и 10 секунд)
+            if (AreSpidersPresent() && time >= 10)
             {
                 timer.Stop(); // Остановка таймера
                 MessageBox.Show("GAME OVER! Количество очков: " + score.ToString());
@@ -46,10 +46,10 @@ namespace Пауки
             {
                 if (control is PictureBox && control.Tag?.ToString() == "spider")
                 {
-                    return true; // Паук найден
+                    return true;
                 }
             }
-            return false; // Пауки отсутствуют
+            return false;
         }
 
 
@@ -89,9 +89,9 @@ namespace Пауки
             // Выбор случайного изображения паука
             Random random = new Random();
             int index = random.Next(spiderImages.Count);
-            spider.Image = spiderImages[index]; // Установка изображения паука
+            spider.Image = spiderImages[index];
 
-            spider.Tag = "spider"; // Установка атрибута Tag для паука
+            spider.Tag = "spider";
 
             // Добавление обработчика события Click для паука
             spider.Click += new EventHandler(Spider_Click);
@@ -126,8 +126,8 @@ namespace Пауки
                 }
             }
 
-            CreateSpider(); // Создание первого паука при загрузке формы
-            timer.Start(); // Запуск таймера
+            CreateSpider();
+            timer.Start();
         }
     }
 }
